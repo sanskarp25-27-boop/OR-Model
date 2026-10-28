@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "creation": "2026-10-12 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "movement_type",
+  "reference_name",
+  "item_code",
+  "initiation_date",
+  "dispatch_date",
+  "qty",
+  "received_qty",
+  "pending_qty",
+  "awb_no",
+  "status",
+  "delivery_note",
+  "from_sales_return",
+  "pod",
+  "sales_invoice"
+ ],
+ "fields": [
+  {
+   "fieldname": "movement_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Movement Type",
+   "options": "Primary Sale\nPrimary Return",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "description": "Dispatch Delivery Note (Primary Sale), or the marketplace's return number (Primary Return).",
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "initiation_date",
+   "fieldtype": "Date",
+   "label": "Initiation Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dispatch_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Dispatch Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "received_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Received Qty",
+   "read_only": 1,
+   "description": ""
+  },
+  {
+   "fieldname": "pending_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Pending Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "awb_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "AWB / Tracking ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nDispatched\nPartially Received\nReceived\nReturn Initiated\nReturn Dispatched\nReturn Completed\nCancelled",
+   "read_only": 1
+  },
+  {
+   "description": "Primary Sale: the dispatch Delivery Note. Primary Return: the return Delivery Note made at Putaway.",
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "label": "Delivery Note",
+   "options": "Delivery Note",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Goods that came back through a Sales Return without a tracked Primary Return.",
+   "fieldname": "from_sales_return",
+   "fieldtype": "Check",
+   "label": "From Sales Return",
+   "read_only": 1
+  },
+  {
+   "description": "Proof of Delivery attached when the marketplace's receipt was recorded (the latest one; every POD is also in the record's attachments).",
+   "fieldname": "pod",
+   "fieldtype": "Attach",
+   "label": "POD",
+   "read_only": 1
+  },
+  {
+   "description": "Primary Sale: its Primary Sales Invoice. Primary Return: the latest credit note for the returned goods.",
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-28 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "Marketplace OR Stock Movement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

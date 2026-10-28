@@ -1,0 +1,30 @@
+{
+ "content": null,
+ "creation": "2026-10-14 12:30:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "store",
+ "idx": 0,
+ "modified": "2026-10-14 13:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "or-app",
+ "owner": "Administrator",
+ "page_name": "or-app",
+ "roles": [
+  {
+   "role": "OR User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "OR Workspace"
+}

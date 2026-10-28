@@ -1,0 +1,21 @@
+{
+    "aggregate_function_based_on": "virtual_stock",
+    "creation": "2026-10-12 12:00:00.000000",
+    "docstatus": 0,
+    "doctype": "Number Card",
+    "document_type": "OR Primary Sales Tracker",
+    "dynamic_filters_json": "[]",
+    "filters_json": "[]",
+    "function": "Sum",
+    "idx": 0,
+    "is_public": 1,
+    "is_standard": 1,
+    "label": "Stock at Marketplace",
+    "modified": "2026-10-14 10:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Marketplace OR",
+    "name": "OR Marketplace Virtual Stock",
+    "owner": "Administrator",
+    "show_percentage_stats": 0,
+    "type": "Document Type"
+}

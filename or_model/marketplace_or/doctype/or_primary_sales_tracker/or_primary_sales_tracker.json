@@ -1,0 +1,431 @@
+{
+ "actions": [],
+ "creation": "2026-10-12 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "marketplace",
+  "sales_order",
+  "marketplace_po_no",
+  "column_break_basic",
+  "po_date",
+  "customer",
+  "order_status",
+  "status",
+  "dispatch_section",
+  "total_dispatched_qty",
+  "marketplace_received_qty",
+  "column_break_dispatch",
+  "pending_receipt_qty",
+  "sales_section",
+  "total_sold_qty",
+  "secondary_return_qty",
+  "primary_sales_value",
+  "column_break_sales",
+  "secondary_sales_value",
+  "marketplace_commission",
+  "net_price_variance",
+  "inventory_section",
+  "virtual_stock",
+  "stock_in_transit",
+  "column_break_inventory",
+  "return_in_transit",
+  "returns_section",
+  "return_initiated_qty",
+  "return_received_qty",
+  "column_break_returns",
+  "return_pending_qty",
+  "financial_section",
+  "debit_note_amount",
+  "credit_note_amount",
+  "column_break_financial",
+  "net_adjustment_amount",
+  "provision_amount",
+  "variance_not_invoiced",
+  "items_section",
+  "item_summary_html",
+  "movements_tab",
+  "stock_movements",
+  "variance_tab",
+  "price_notes",
+  "reconciliation_section",
+  "reconciliation_status",
+  "last_note_submitted_on",
+  "column_break_recon",
+  "approved_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "marketplace",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Marketplace",
+   "options": "OR Marketplace",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Primary Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "sales_order.po_no",
+   "fetch_if_empty": 1,
+   "fieldname": "marketplace_po_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Marketplace PO No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sales_order.po_date",
+   "fieldname": "po_date",
+   "fieldtype": "Date",
+   "label": "PO Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nOn Hold\nTo Deliver and Bill\nTo Bill\nTo Deliver\nCompleted\nCancelled\nClosed",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "no_copy": 1,
+   "description": "Same as the Primary Sales Order's status, kept in sync automatically."
+  },
+  {
+   "default": "Submitted",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 0,
+   "in_standard_filter": 1,
+   "label": "OR Stage",
+   "options": "Submitted\nActive\nUnder Reconciliation\nReconciled\nClosed",
+   "read_only": 1,
+   "description": "Reconciliation workflow: Submitted → Active → Under Reconciliation → Reconciled → Closed."
+  },
+  {
+   "fieldname": "dispatch_section",
+   "fieldtype": "Section Break",
+   "label": "Primary Sale Summary"
+  },
+  {
+   "fieldname": "total_dispatched_qty",
+   "fieldtype": "Float",
+   "label": "Primary Sale Qty (Dispatched)",
+   "read_only": 1
+  },
+  {
+   "description": "Confirmed by the marketplace (with POD)",
+   "fieldname": "marketplace_received_qty",
+   "fieldtype": "Float",
+   "label": "Primary Sale Received by Marketplace",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dispatch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Dispatched - received",
+   "fieldname": "pending_receipt_qty",
+   "fieldtype": "Float",
+   "label": "Primary Sale Pending Receipt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_section",
+   "fieldtype": "Section Break",
+   "label": "Secondary Sale Summary"
+  },
+  {
+   "description": "Sold by the marketplace to end customers (before returns)",
+   "fieldname": "total_sold_qty",
+   "fieldtype": "Float",
+   "label": "Secondary Sale Qty",
+   "read_only": 1
+  },
+  {
+   "description": "Returned by end customers to the marketplace",
+   "fieldname": "secondary_return_qty",
+   "fieldtype": "Float",
+   "label": "Secondary Return Qty",
+   "read_only": 1
+  },
+  {
+   "description": "Secondary sale qty x Primary Rate",
+   "fieldname": "primary_sales_value",
+   "fieldtype": "Currency",
+   "label": "Primary Sales Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sales",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Secondary sale qty x Secondary Rate",
+   "fieldname": "secondary_sales_value",
+   "fieldtype": "Currency",
+   "label": "Secondary Sales Value",
+   "read_only": 1
+  },
+  {
+   "description": "Commission kept by the marketplace: secondary sale qty x (Secondary Rate - Secondary Rate without Commission)",
+   "fieldname": "marketplace_commission",
+   "fieldtype": "Currency",
+   "label": "Marketplace Commission",
+   "read_only": 1
+  },
+  {
+   "description": "(Secondary Rate without Commission - Primary Rate) x qty",
+   "fieldname": "net_price_variance",
+   "fieldtype": "Currency",
+   "label": "Net Price Variance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inventory_section",
+   "fieldtype": "Section Break",
+   "label": "Stock at Marketplace"
+  },
+  {
+   "description": "Primary sale received - secondary sold + secondary returned - primary returns dispatched",
+   "fieldname": "virtual_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Stock at Marketplace (virtual)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_in_transit",
+   "fieldtype": "Float",
+   "label": "Primary Sale in Transit (virtual)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_inventory",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Primary returns dispatched - received",
+   "fieldname": "return_in_transit",
+   "fieldtype": "Float",
+   "label": "Primary Return in Transit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "returns_section",
+   "fieldtype": "Section Break",
+   "label": "Primary Return Summary"
+  },
+  {
+   "fieldname": "return_initiated_qty",
+   "fieldtype": "Float",
+   "label": "Primary Return Initiated Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "return_received_qty",
+   "fieldtype": "Float",
+   "label": "Primary Return Received Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_returns",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Initiated, not yet with the carrier",
+   "fieldname": "return_pending_qty",
+   "fieldtype": "Float",
+   "label": "Primary Return Pending Dispatch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "financial_section",
+   "fieldtype": "Section Break",
+   "label": "Financial Summary"
+  },
+  {
+   "description": "Submitted notes only",
+   "fieldname": "debit_note_amount",
+   "fieldtype": "Currency",
+   "label": "Debit Note Amount",
+   "read_only": 1
+  },
+  {
+   "description": "Submitted notes only",
+   "fieldname": "credit_note_amount",
+   "fieldtype": "Currency",
+   "label": "Credit Note Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_financial",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Debit - credit, submitted",
+   "fieldname": "net_adjustment_amount",
+   "fieldtype": "Currency",
+   "label": "Net Adjustment Amount",
+   "read_only": 1
+  },
+  {
+   "description": "Variance of secondary sales below the primary rate booked to the OR Sale Provision and not yet cleared by a submitted Credit Note.",
+   "fieldname": "provision_amount",
+   "fieldtype": "Currency",
+   "label": "OR Sale Provision",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_not_invoiced",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Variance Not in a Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Item-wise Stock at Marketplace"
+  },
+  {
+   "fieldname": "item_summary_html",
+   "fieldtype": "HTML",
+   "label": "Item Summary"
+  },
+  {
+   "fieldname": "movements_tab",
+   "fieldtype": "Tab Break",
+   "label": "Primary Sales & Returns"
+  },
+  {
+   "description": "Primary Sale rows come from the dispatch Delivery Notes (Pick, Pack & Dispatch in the OR app, or a Delivery Note made against the order); Primary Return rows from the Primary Return and Putaway steps.",
+   "fieldname": "stock_movements",
+   "fieldtype": "Table",
+   "label": "Primary Sales & Returns",
+   "options": "Marketplace OR Stock Movement",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Price Variance & Notes"
+  },
+  {
+   "fieldname": "price_notes",
+   "fieldtype": "Table",
+   "label": "Debit / Credit Notes",
+   "options": "Marketplace OR Price Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reconciliation_section",
+   "fieldtype": "Section Break",
+   "label": "Reconciliation"
+  },
+  {
+   "fieldname": "reconciliation_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reconciliation Status",
+   "options": "Pending\nVariance not invoiced\nNotes awaiting submission\nReconciled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_note_submitted_on",
+   "fieldtype": "Date",
+   "label": "Last Note Submitted On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_recon",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-28 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "OR Primary Sales Tracker",
+ "naming_rule": "By script",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "OR User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "sales_order",
+ "track_changes": 1
+}

@@ -1,0 +1,21 @@
+{
+    "aggregate_function_based_on": "",
+    "creation": "2026-10-12 12:00:00.000000",
+    "docstatus": 0,
+    "doctype": "Number Card",
+    "document_type": "OR Primary Sales Tracker",
+    "dynamic_filters_json": "[]",
+    "filters_json": "[[\"OR Primary Sales Tracker\",\"status\",\"!=\",\"Closed\",false]]",
+    "function": "Count",
+    "idx": 0,
+    "is_public": 1,
+    "is_standard": 1,
+    "label": "Active OR Primary Sales Trackers",
+    "modified": "2026-10-13 19:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Marketplace OR",
+    "name": "Active OR Records",
+    "owner": "Administrator",
+    "show_percentage_stats": 0,
+    "type": "Document Type"
+}

@@ -1,0 +1,21 @@
+{
+    "aggregate_function_based_on":  "qty",
+    "creation":  "2026-10-12 12:00:00.000000",
+    "docstatus":  0,
+    "doctype":  "Number Card",
+    "document_type":  "OR Secondary Sales Order",
+    "dynamic_filters_json":  "[[\"OR Secondary Sales Order\",\"sale_date\",\"\u003e=\",\"frappe.datetime.add_days(frappe.datetime.nowdate(), -6)\"]]",
+    "filters_json":  "[]",
+    "function":  "Sum",
+    "idx":  0,
+    "is_public":  1,
+    "is_standard":  1,
+    "label":  "Secondary Sale Units (Last 7 Days)",
+    "modified":  "2026-10-13 18:00:00.000000",
+    "modified_by":  "Administrator",
+    "module":  "Marketplace OR",
+    "name":  "OR Units Sold Last 7 Days",
+    "owner":  "Administrator",
+    "show_percentage_stats":  0,
+    "type":  "Document Type"
+}

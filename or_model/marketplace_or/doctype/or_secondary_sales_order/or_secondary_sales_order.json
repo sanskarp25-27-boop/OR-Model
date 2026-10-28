@@ -1,0 +1,313 @@
+{
+ "actions": [],
+ "autoname": "SSO-.YYYY.-.#####",
+ "creation": "2026-10-12 12:00:00.000000",
+ "description": "A Secondary Sale: the marketplace selling to its end customer. Created only by importing secondary sales on a OR Primary Sales Tracker.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sale_section",
+  "marketplace",
+  "marketplace_order_id",
+  "sale_date",
+  "is_return",
+  "return_against",
+  "column_break_sale",
+  "or_reference",
+  "sales_order",
+  "marketplace_po_no",
+  "column_break_ref",
+  "marketplace_sku",
+  "item_code",
+  "import_batch",
+  "pricing_section",
+  "qty",
+  "returned_qty",
+  "primary_rate",
+  "selling_rate",
+  "commission_percent",
+  "net_secondary_rate",
+  "column_break_price",
+  "variance_per_unit",
+  "total_variance",
+  "note_section",
+  "note_status",
+  "price_note",
+  "column_break_note",
+  "sales_invoice",
+  "primary_invoice",
+  "postings_section",
+  "column_break_post",
+  "journal_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "sale_section",
+   "fieldtype": "Section Break",
+   "label": "Secondary Sale"
+  },
+  {
+   "fieldname": "marketplace",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Marketplace",
+   "options": "OR Marketplace",
+   "read_only": 1
+  },
+  {
+   "fieldname": "marketplace_order_id",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Marketplace Order / Return ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "sale_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Secondary Sale / Return Date",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_return",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Secondary Return",
+   "read_only": 1,
+   "description": "The end customer returned goods to the marketplace."
+  },
+  {
+   "depends_on": "is_return",
+   "fieldname": "return_against",
+   "fieldtype": "Link",
+   "label": "Return Against",
+   "options": "OR Secondary Sales Order",
+   "read_only": 1,
+   "search_index": 1,
+   "description": "The Secondary Sale being returned."
+  },
+  {
+   "fieldname": "column_break_sale",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "or_reference",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "OR Primary Sales Tracker",
+   "options": "OR Primary Sales Tracker",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "or_reference.sales_order",
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Primary Sales Order",
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "or_reference.marketplace_po_no",
+   "fieldname": "marketplace_po_no",
+   "fieldtype": "Data",
+   "label": "Marketplace PO No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ref",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "marketplace_sku",
+   "fieldtype": "Data",
+   "label": "Marketplace SKU",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_batch",
+   "fieldtype": "Data",
+   "label": "Import Batch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "read_only": 1,
+   "description": "Negative on a Secondary Return."
+  },
+  {
+   "depends_on": "eval:!doc.is_return",
+   "fieldname": "returned_qty",
+   "fieldtype": "Float",
+   "label": "Secondary Returned Qty",
+   "read_only": 1,
+   "no_copy": 1,
+   "description": "Units of this sale returned by the end customer."
+  },
+  {
+   "description": "Your rate to the marketplace on the Primary Sale.",
+   "fieldname": "primary_rate",
+   "fieldtype": "Currency",
+   "label": "Primary Rate",
+   "read_only": 1
+  },
+  {
+   "description": "The marketplace's rate to the end customer.",
+   "fieldname": "selling_rate",
+   "fieldtype": "Currency",
+   "label": "Secondary Rate",
+   "read_only": 1
+  },
+  {
+   "description": "From Marketplace OR Settings > Marketplace Commission at import, or worked out from the file's net payout when the import format has a Net Payout Column.",
+   "fieldname": "commission_percent",
+   "fieldtype": "Percent",
+   "label": "Marketplace Commission %",
+   "precision": "6",
+   "read_only": 1
+  },
+  {
+   "description": "Secondary Rate × (1 − Commission %). Debit / Credit Notes are worked out from this rate.",
+   "fieldname": "net_secondary_rate",
+   "fieldtype": "Currency",
+   "label": "Secondary Rate without Commission",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_price",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Secondary Rate without Commission − Primary Rate",
+   "fieldname": "variance_per_unit",
+   "fieldtype": "Currency",
+   "label": "Variance per Unit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_variance",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Variance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "note_section",
+   "fieldtype": "Section Break",
+   "label": "Debit / Credit Note"
+  },
+  {
+   "fieldname": "note_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Note Status",
+   "options": "No variance\nNot created\nDraft\nSubmitted",
+   "read_only": 1
+  },
+  {
+   "description": "Row of the price note on the OR Primary Sales Tracker.",
+   "fieldname": "price_note",
+   "fieldtype": "Data",
+   "label": "Price Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_note",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Debit / Credit Note",
+   "options": "Sales Invoice",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "description": "The Primary Sales Invoice these units were billed on (set at month-end settlement, oldest invoice first). The rate-difference note is made against it.",
+   "fieldname": "primary_invoice",
+   "fieldtype": "Link",
+   "label": "Primary Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "postings_section",
+   "fieldtype": "Section Break",
+   "label": "Stock and Accounts"
+  },
+  {
+   "fieldname": "column_break_post",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Sale below the primary rate: OR Sales Variance Dr / OR Sale Provision Cr (reversed for a secondary return). No stock moves: the marketplace's stock is virtual.",
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-28 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "OR Secondary Sales Order",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "OR User"
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager"
+  }
+ ],
+ "sort_field": "sale_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "marketplace_order_id"
+}

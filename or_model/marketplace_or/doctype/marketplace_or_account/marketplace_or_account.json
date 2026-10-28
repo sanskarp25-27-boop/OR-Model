@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "creation": "2026-10-28 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "marketplace", "abbreviation", "customer",
+  "ledgers_section", "provision_account", "column_break_led", "variance_account",
+  "accounting_section", "debit_note_series", "credit_note_series", "column_break_acc", "cost_center"
+ ],
+ "fields": [
+  {"fieldname": "marketplace", "fieldtype": "Link", "in_list_view": 1, "label": "Marketplace", "options": "OR Marketplace", "reqd": 1},
+  {"fetch_from": "marketplace.abbreviation", "fieldname": "abbreviation", "fieldtype": "Data", "label": "Abbreviation", "read_only": 1},
+  {"description": "The marketplace as billed in ERPNext (the debtor, e.g. Myntra Jabong Pvt. Ltd.). Its Sales Orders carry the marketplace PO number.", "fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Billing Customer", "options": "Customer", "reqd": 1},
+  {"description": "The primary sale is a normal sale (Delivery Note and Sales Invoice); these ledgers only carry the price variance of the secondary sales.", "fieldname": "ledgers_section", "fieldtype": "Section Break", "label": "Ledgers"},
+  {"description": "Liability. Credited at import with the variance of secondary sales below the primary rate (OR Sales Variance Dr / OR Sale Provision Cr); cleared by the month-end Credit Note (OR Sale Provision Dr / Billing Customer Cr).", "fieldname": "provision_account", "fieldtype": "Link", "label": "OR Sale Provision Account", "options": "Account"},
+  {"fieldname": "column_break_led", "fieldtype": "Column Break"},
+  {"description": "Expense. Debited with the provision for sales below the primary rate; credited by the month-end Debit Note for sales above it.", "fieldname": "variance_account", "fieldtype": "Link", "label": "OR Sales Variance Account", "options": "Account"},
+  {"fieldname": "accounting_section", "fieldtype": "Section Break", "label": "Debit / Credit Notes"},
+  {"default": "ACC-SINV-DN-.YYYY.-", "fieldname": "debit_note_series", "fieldtype": "Data", "label": "Debit Note Naming Series", "reqd": 1},
+  {"default": "ACC-SINV-CN-.YYYY.-", "fieldname": "credit_note_series", "fieldtype": "Data", "label": "Credit Note Naming Series", "reqd": 1},
+  {"fieldname": "column_break_acc", "fieldtype": "Column Break"},
+  {"fieldname": "cost_center", "fieldtype": "Link", "label": "Cost Center", "options": "Cost Center", "reqd": 1}
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-28 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "Marketplace OR Account",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

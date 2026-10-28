@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "creation": "2026-10-12 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customers_section", "customer_marketplaces",
+  "commission_section", "commissions",
+  "import_section", "import_formats",
+  "notes_section", "group_notes_by", "approver_role", "column_break_notes", "auto_create_notes", "auto_submit_notes",
+  "accounts_section", "accounts"
+ ],
+ "fields": [
+  {"description": "Which marketplace each customer belongs to. On a Sales Order with Flow = OR, choosing one of these customers fills in its Marketplace. A marketplace can have several customers; each customer belongs to one marketplace.", "fieldname": "customers_section", "fieldtype": "Section Break", "label": "Customer ↔ Marketplace"},
+  {"fieldname": "customer_marketplaces", "fieldtype": "Table", "label": "Customer ↔ Marketplace", "options": "OR Customer Map"},
+  {"description": "The marketplace's commission on each Secondary Sale. At import: Secondary Rate without Commission = Secondary Rate × (1 − Commission %). Example: Secondary Rate 120 at 25% → 90. A marketplace without a row has 0% commission. Changing a % affects future imports only.", "fieldname": "commission_section", "fieldtype": "Section Break", "label": "Marketplace Commission"},
+  {"fieldname": "commissions", "fieldtype": "Table", "label": "Marketplace Commission", "options": "OR Marketplace Commission"},
+  {"description": "How each marketplace's sales report is laid out: which columns hold the order ID, sale date, SKU, quantity and selling price. A marketplace without a row uses the standard columns marketplace_order_id, sale_date, marketplace_sku, qty, selling_price.", "fieldname": "import_section", "fieldtype": "Section Break", "label": "Secondary Sales Import Formats"},
+  {"fieldname": "import_formats", "fieldtype": "Table", "label": "Secondary Sales Import Formats", "options": "OR Import Format"},
+  {"description": "Rate difference: the Secondary Rate without Commission against the Primary Rate. Each secondary sale posts it to the Rate Difference account; the month-end settlement clears it with a Credit Note (secondary lower) or Debit Note (secondary higher) against the Primary Sales Invoice the units came from.", "fieldname": "notes_section", "fieldtype": "Section Break", "label": "Rate Difference Settlement"},
+  {"default": "Month", "fieldname": "group_notes_by", "fieldtype": "Select", "label": "Group Notes By", "options": "Month\nSale Date\nImport Batch", "reqd": 1, "description": "Month: one credit note and one debit note per Primary Sales Invoice per month (month-end settlement)."},
+  {"default": "Accounts Manager", "description": "Role allowed to submit notes and approve OR Primary Sales Trackers.", "fieldname": "approver_role", "fieldtype": "Link", "label": "Note Approver Role", "options": "Role", "reqd": 1},
+  {"fieldname": "column_break_notes", "fieldtype": "Column Break"},
+  {"default": "0", "description": "Off for month-end settlement: notes are made by Month-end Settlement.", "fieldname": "auto_create_notes", "fieldtype": "Check", "label": "Create Draft Notes on Import"},
+  {"default": "0", "description": "Skips the approval step.", "fieldname": "auto_submit_notes", "fieldtype": "Check", "label": "Submit Notes Automatically"},
+  {"description": "One row per marketplace.", "fieldname": "accounts_section", "fieldtype": "Section Break", "label": "Marketplace Accounts"},
+  {"fieldname": "accounts", "fieldtype": "Table", "label": "Marketplace Accounts", "options": "Marketplace OR Account"}
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-21 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "Marketplace OR Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "email": 1, "print": 1, "read": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"read": 1, "role": "OR User"},
+  {"read": 1, "role": "Accounts Manager"}
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

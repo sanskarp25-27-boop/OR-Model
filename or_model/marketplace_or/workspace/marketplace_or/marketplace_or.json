@@ -1,0 +1,244 @@
+{
+ "app": "or_model",
+ "charts": [
+  {
+   "chart_name": "OR Stock Position by Marketplace",
+   "label": "Stock Position by Marketplace"
+  },
+  {
+   "chart_name": "OR Units Sold by Day Chart",
+   "label": "Secondary Sale Units by Day"
+  }
+ ],
+ "content": "[{\"id\": \"sordash001\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"OR Dashboard\", \"col\": 12}}]",
+ "creation": "2026-10-12 12:00:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "OR Dashboard",
+   "label": "OR Dashboard"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "store",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "OR Workspace",
+ "links": [],
+ "modified": "2026-10-22 13:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Marketplace OR",
+ "name": "Marketplace OR",
+ "number_cards": [
+  {
+   "label": "Active OR Primary Sales Trackers",
+   "number_card_name": "Active OR Records"
+  },
+  {
+   "label": "Stock at Marketplace",
+   "number_card_name": "OR Marketplace Virtual Stock"
+  },
+  {
+   "label": "Primary Sale in Transit",
+   "number_card_name": "OR Stock in Transit"
+  },
+  {
+   "label": "Primary Return in Transit",
+   "number_card_name": "OR Return in Transit"
+  },
+  {
+   "label": "Secondary Sale Units (Last 7 Days)",
+   "number_card_name": "OR Units Sold Last 7 Days"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "OR User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 30.0,
+ "shortcuts": [
+  {
+   "label": "OR Dashboard",
+   "link_to": "Marketplace OR Dashboard",
+   "type": "Report",
+   "color": "Grey"
+  },
+  {
+   "label": "Primary Sales Order List",
+   "link_to": "Sales Order",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey",
+   "stats_filter": "[[\"Sales Order\", \"sales_flow\", \"=\", \"OR\", false]]"
+  },
+  {
+   "label": "OR Secondary Sales Order List",
+   "link_to": "OR Secondary Sales Order",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "OR Primary Sales Tracker List",
+   "link_to": "OR Primary Sales Tracker",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "Item Mapping",
+   "link_to": "OR Item Mapping",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Grey"
+  },
+  {
+   "label": "Settings",
+   "link_to": "Marketplace OR Settings",
+   "type": "DocType",
+   "color": "Grey"
+  }
+ ],
+ "sidebar_items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Home",
+   "link_to": "Marketplace OR",
+   "link_type": "Workspace",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link",
+   "icon": "house"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "OR Dashboard",
+   "link_to": "Marketplace OR Dashboard",
+   "link_type": "Report",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link",
+   "icon": "chart-column"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "OR Primary Sales Tracker List",
+   "link_to": "OR Primary Sales Tracker",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link",
+   "icon": "list-checks"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Primary Sales Order List",
+   "link_to": "Sales Order",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link",
+   "icon": "truck",
+   "route_options": "{\"sales_flow\": \"OR\"}"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "OR Secondary Sales Order List",
+   "link_to": "OR Secondary Sales Order",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link",
+   "icon": "shopping-bag"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "icon": "database",
+   "indent": 1,
+   "keep_closed": 0,
+   "label": "Masters",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Section Break"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Marketplace",
+   "link_to": "OR Marketplace",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Item Mapping",
+   "link_to": "OR Item Mapping",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 1,
+   "collapsible": 1,
+   "default_workspace": 0,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Settings",
+   "link_to": "Marketplace OR Settings",
+   "link_type": "DocType",
+   "open_in_new_tab": 0,
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "standard": 1,
+ "title": "OR Workspace",
+ "type": "Workspace"
+}
