@@ -183,6 +183,9 @@ def delivery_note_validate(doc, method=None):
 		return
 	tracker = tracker_of(order)
 	if not tracker:
+		# an automation may draft the Delivery Note in the order's on_submit, before the tracker is made
+		if doc.docstatus == 0:
+			return
 		frappe.throw(_("{0} has no OR Primary Sales Tracker. Submit the Sales Order first.").format(order))
 	doc.or_reference = tracker
 	if doc.is_return and not frappe.flags.or_putaway:
